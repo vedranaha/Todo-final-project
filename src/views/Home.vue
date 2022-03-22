@@ -1,3 +1,3 @@
 <template>
-    <p>Hola</p>
+    <h1>home vue</h1>
 </template>

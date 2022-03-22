@@ -21,6 +21,9 @@ export const useUserStore = defineStore("user", {
         console.log(this.user);
       }
     },
+    signIn() {},
+    signOut() {},
+
     persist: {
       enabled: true,
       strategies: [
