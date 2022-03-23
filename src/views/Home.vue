@@ -1,5 +1,9 @@
 <template>
-    <h1>home vue</h1>
-    <router-link to="/auth">Sign in</router-link>
-    
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
+
+<script setup></script>
+
+<style></style>

@@ -3,6 +3,9 @@
     <h1>Sign in</h1>
 
     <form @submit.prevent="signIn">
+      <div v-if="errorMsg">
+        <p>{{ errorMsg }}</p>
+      </div>
       <input
         class="inputField"
         type="email"
@@ -52,26 +55,6 @@ async function signIn() {
       errorMsg.value = null;
     }, 5000);
   }
-}
-//Function to sign up User to Supabase with timeOut() method to showing errors good-ux
-async function signUp() {
-  if (password.value === confirmPassword.value) {
-    try {
-      await useUserStore().signUp(email.value, password.value);
-      // if (error) throw error;
-      redirect.push({ path: "/auth" });
-    } catch (error) {
-      errorMsg.value = error.message;
-      setTimeout(() => {
-        errorMsg.value = null;
-      }, 5000);
-    }
-    return;
-  }
-  errorMsg.value = "Passwords do not match";
-  setTimeout(() => {
-    errorMsg.value = null;
-  }, 5000);
 }
 </script>
 
