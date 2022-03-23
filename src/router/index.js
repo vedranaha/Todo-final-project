@@ -1,9 +1,26 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Auth from "../views/Auth.vue";
 import Home from "../views/Home.vue";
+
+import SignIn from "../components/SignIn.vue";
+import SignUp from "../components/SignUp.vue";
+//import SignIn from "../components/SignIn";
+
 const routes = [
-  { path: "/auth", component: Auth },
-  { path: "/", component: Home, meta: { requiresAuth: true } },
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/auth",
+    name: "Auth",
+    component: Auth,
+    children: [
+      { path: "", component: SignIn },
+      { path: "sign-up", component: SignUp },
+    ],
+  },
 ];
 const router = createRouter({
   history: createWebHistory(),
