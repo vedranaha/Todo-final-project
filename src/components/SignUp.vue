@@ -44,6 +44,7 @@ const email = ref(null);
 const password = ref(null);
 const confirmPassword = ref(null);
 const errorMsg = ref(null);
+const redirect = useRouter();
 
 // Use constants to to use personalrouter "Props"
 const route = "/auth";

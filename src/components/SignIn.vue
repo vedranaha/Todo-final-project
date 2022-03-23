@@ -33,13 +33,13 @@ import PersonalRouter from "../components/PersonalRouter.vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../store/user";
 import { supabase } from "../supabase";
+import { storeToRefs } from "pinia";
 
 // Create Data constants
 const email = ref(null);
 const password = ref(null);
 const redirect = useRouter();
 const errorMsg = ref(null);
-const router = useRouter();
 
 // Use constants to use personalrouter "Props"
 const route = "/auth/sign-up";
@@ -52,7 +52,7 @@ async function signIn() {
     // if (error) throw error;
     redirect.push({ path: "/" });
   } catch (error) {
-    errorMsg.value = "Error: ${error.message}";
+    errorMsg.value = error.message;
     setTimeout(() => {
       errorMsg.value = null;
     }, 5000);
