@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <h1>hello</h1>
-  </div>
+  <App-header />
+  <NewTask />
 </template>
 
-<script setup></script>
+<script setup>
+import NewTask from "../components/NewTask.vue";
+import AppHeader from "../components/App-header.vue";
+</script>
 
 <style></style>
