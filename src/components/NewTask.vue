@@ -1,6 +1,9 @@
 <script setup>
 import { ref, computed } from "vue";
 import { supabase } from "../supabase";
+import { useTaskStore } from "../store/task";
+
+const taskStore = useTaskStore();
 
 const user = supabase.auth.user();
 function changeUser() {
@@ -17,9 +20,12 @@ const filteredTodos = computed(() => {
   return hideCompleted.value ? todos.value.filter((t) => !t.done) : todos.value;
 });
 
-function addTodo() {
-  todos.value.push({ id: id++, text: newTodo.value, done: false });
-  newTodo.value = "";
+async function addTodo() {
+  console.log(newTodo.value);
+  await taskStore.addTodo(newTodo.value);
+  // todos.value.push({ id: id++, text: newTodo.value, done: false });
+  // newTodo.value = "";
+  // console.log(todos.value);
 }
 
 function removeTodo(todo) {
