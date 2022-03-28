@@ -15,8 +15,8 @@ export const useTaskStore = defineStore("tasks", {
       return this.tasks;
     },
     //new task function
-    async addTodo(title) {
-      console.log(useUserStore().user.id);
+    async insertTask(title) {
+      console.log(useUserStore());
       const { data, error } = await supabase.from("tasks").insert([
         {
           title: title,
@@ -25,17 +25,6 @@ export const useTaskStore = defineStore("tasks", {
         },
       ]);
       if (error) throw error;
-    },
-    // filtered todos function
-    async dataTask(title) {
-      {
-        const { data: tasks } = await supabase
-          .from("tasks")
-          .select("*")
-          .filter("is_complete", "eq", true);
-        this.tasks = tasks;
-        return this.tasks;
-      }
     },
   },
 });

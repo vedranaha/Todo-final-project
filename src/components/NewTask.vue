@@ -21,60 +21,25 @@ async function getTasks() {
 }
 getTasks();
 
-// VEDRANA FIND OUT WHAT THESE VARIABLES ARE USED FOR
-const newTodo = ref("");
-const hideCompleted = ref(false);
+//functions
+const newItem = ref("");
+const newTitle = ref("");
+const task = useTaskStore();
 
-let id = 0;
-
-//const dataTask = computed(() => {
-//  return hideCompleted.value ? todos.value.filter((t) => !t.done) : todos.value;
-//});
-
-//async function filteredTodos() {
-//  (await taskStore.hideCompleted.value)
-//   ? todos.value.filter((t) => !t.done)
-//  : todos.value;
-//}
-
-// Function that adds a new todo to supabase backend
-async function addTodo() {
-  console.log(newTodo.value);
-  if (newTodo.value.length > 0) {
-    await taskStore.addTodo(newTodo.value);
-  }
-  return (newTodo.value = "");
-}
-
-//todos.value.push({ id: id++, text: newTodo.value, done: false });
-//newTodo.value = "";
-//console.log(todos.value);
-
-// function removeTodo(todo) {
-//   todos.value = todos.value.filter((t) => t !== todo);
-// }
+const newTask = () => {
+  useTaskStore().insertTask(newItem.value, user.useUserStore);
+  newItem.value = "";
+  getTasks();
+};
 </script>
 
 <template>
   <div>
-    <!-- <h3 class="text-welcome">
-      Welcome <span>{{ changeUser() }}</span>
-    </h3> -->
     <h3 class="text-welcome">Welcome {{ userName }}</h3>
-    <form @submit.prevent="addTodo">
-      <input v-model="newTodo" placeholder="here we go" />
+    <form @submit.prevent="newTask">
+      <input v-model="newItem" placeholder="here we go" id="task" />
       <button>Add Todo</button>
     </form>
-    <!-- <ol>
-      <li v-for="todo in dataTask" :key="todo.id">
-        <input type="checkbox" v-model="todo.done" />
-        <span :class="{ done: todo.done }">{{ todo.title }}</span>
-        <button @click="removeTodo(todo)">🗑️</button>
-      </li>
-    </ol> -->
-    <!-- <button @click="hideCompleted = !hideCompleted">
-      {{ hideCompleted ? "Show all" : "Hide completed" }}
-    </button> -->
     <div>
       <TaskItem :item="task" v-for="(task, index) in tasks" />
     </div>
