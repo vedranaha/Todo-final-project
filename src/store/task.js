@@ -12,6 +12,7 @@ export const useTaskStore = defineStore("tasks", {
         .select("*")
         .order("id", { ascending: false });
       this.tasks = tasks;
+      return this.tasks;
     },
     //new task function
     async addTodo(title) {
@@ -24,9 +25,16 @@ export const useTaskStore = defineStore("tasks", {
         },
       ]);
       if (error) throw error;
-      if (task) {
-        this.task = task.value;
-        console.log(this.task);
+    },
+    // filtered todos function
+    async dataTask(title) {
+      {
+        const { data: tasks } = await supabase
+          .from("tasks")
+          .select("*")
+          .filter("is_complete", "eq", true);
+        this.tasks = tasks;
+        return this.tasks;
       }
     },
   },
