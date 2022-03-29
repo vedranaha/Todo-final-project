@@ -26,5 +26,26 @@ export const useTaskStore = defineStore("tasks", {
       ]);
       if (error) throw error;
     },
+    async toggleEdit(title, id) {
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ title: title })
+        .match({ id: id });
+    },
+
+    async toggleComplete(bool, id) {
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({
+          is_complete: bool,
+        })
+        .match({ id: id });
+    },
+    async deleteTask(id) {
+      const { data, error } = await supabase
+        .from("tasks")
+        .delete()
+        .match({ id: id });
+    },
   },
 });

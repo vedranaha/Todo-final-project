@@ -5,8 +5,6 @@ import { useTaskStore } from "../store/task";
 import { useUserStore } from "../store/user";
 import TaskItem from "./TaskItem.vue";
 
-// const user = supabase.auth.user();
-
 // Print User Email to Frontend
 const user = computed(() => useUserStore().$state.user);
 const userEmail = useUserStore().user.email;
@@ -40,9 +38,6 @@ const newTask = () => {
       <input v-model="newItem" placeholder="here we go" id="task" />
       <button>Add Todo</button>
     </form>
-    <div>
-      <TaskItem :item="task" v-for="(task, index) in tasks" />
-    </div>
   </div>
 </template>
 
