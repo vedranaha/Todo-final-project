@@ -1,21 +1,25 @@
 <template>
-  <div class="nav">
-    <a href="/" class="flex a">
-      <img class="w-16" src="../assets/logo_vh3.png" alt="logo" />
-    </a>
-    <button class="button-signOut" @click="signOut">Sign Out</button>
-  </div>
+  <nav
+    class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800"
+  >
+    <div class="container flex flex-wrap justify-between items-center mx-auto">
+      <a href="/" class="flex items-center">
+        <img class="mr-5 h-8 sm:h-9" src="../assets/logo_vh3.png" alt="logo" />
+        <span
+          class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+          >Todo app Vue3</span
+        >
+      </a>
+      <img
+        class="w-8 h-8 rounded-full"
+        src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        alt="user photo"
+      />
+      <button class="mr-10" @click="signOut">Sign Out</button>
+    </div>
+  </nav>
 </template>
-<style>
-.nav {
-  margin: 20px 0px 0px 50px;
-  display: flex;
-  flex-direction: row;
-}
-/*.button-signOut {
-  margin-left: 300px;
-}*/
-</style>
+<style></style>
 
 <script setup>
 import { supabase } from "../supabase";

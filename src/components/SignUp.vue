@@ -1,5 +1,61 @@
 <template>
-  <div class="signin">
+  <div
+    class="bg-gray-200 rounded py-16 px-12 m-16 flex flex-col items-center justify-center"
+  >
+    <!-- Sign up -->
+    <h1>Sign Up</h1>
+    <div v-if="errorMsg">
+      <p>{{ errorMsg }}</p>
+    </div>
+    <form @submit.prevent="signUp" class="mt-8 mb-4">
+      <div class="mb-4">
+        <label for="userEmail" class="sr-only">Email address</label>
+        <input
+          class="border-solid border border-gray-400 rounded px-2 py-3"
+          type="email"
+          v-model="email"
+          placeholder="Email address"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label for="userEmail" class="sr-only">Password</label>
+        <input
+          class="border-solid border border-gray-400 rounded px-2 py-3"
+          type="password"
+          v-model="password"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label for="userEmail" class="sr-only">Password</label>
+        <input
+          class="border-solid border border-gray-400 rounded px-2 py-3"
+          type="password"
+          v-model="confirmPassword"
+          placeholder="confirm Password"
+          required
+        />
+      </div>
+      <div class="my-4 flex items-center">
+        <input class="h-4 w-4 mr-2" type="checkbox" id="userRemember" />
+        <label for="userRemember">Remember me</label>
+      </div>
+      <button
+        class="bg-gray-500 hover:bg-gray-600 text-white font-bold w-full py-3"
+        type="submit"
+      >
+        Sign up
+      </button>
+    </form>
+    <p>
+      Have an account?
+      <PersonalRouter :route="route" :routerText="routerText" />
+    </p>
+  </div>
+</template>
+<!----<div class="signin">
     <h1>Sign Up</h1>
     <div v-if="errorMsg">
       <p>{{ errorMsg }}</p>
@@ -29,8 +85,7 @@
       Have an account?
       <PersonalRouter :route="route" :routerText="routerText" />
     </p>
-  </div>
-</template>
+  </div>--->
 
 <script setup>
 import { ref } from "vue";

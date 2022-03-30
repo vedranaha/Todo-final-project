@@ -47,37 +47,6 @@
       <PersonalRouter :route="route" :routerText="routerText" />
     </p>
   </div>
-  <!---<div
-    class="bg-gray-200 rounded py-16 px-12 m-16 flex flex-col items-center justify-center"
-  >
-    <h1>Sign in</h1>
-
-    <form class="mt-8 mb-4" @submit.prevent="signIn">
-      <div class="mb-4" v-if="errorMsg">
-        <p>{{ errorMsg }}</p>
-        <label for="userEmail" class="sr-only">Email address</label>
-        <input
-          class="border-solid border border-gray-400 rounded px-2 py-3"
-          type="email"
-          placeholder="Your email"
-          v-model="email"
-          alt="user avatar"
-        />
-      </div>
-
-      <input
-        class="inputField"
-        type="password"
-        placeholder="Your Password"
-        v-model="password"
-      />
-      <button type="submit">Sign In</button>
-    </form>
-    <p>
-      Don't have an account?
-      <PersonalRouter :route="route" :routerText="routerText" />
-    </p>
-  </div>-->
 </template>
 
 <script setup>
