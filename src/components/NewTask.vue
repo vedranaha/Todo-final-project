@@ -33,7 +33,7 @@ const newTask = () => {
 
 <template>
   <div>
-    <h3 class="text-welcome">Welcome {{ userName }}</h3>
+    <h3 class="font-bold text-2xl text-blue-400">Welcome {{ userName }}</h3>
     <form @submit.prevent="newTask">
       <input v-model="newItem" placeholder="here we go" id="task" />
       <button>Add Todo</button>
@@ -42,7 +42,7 @@ const newTask = () => {
 </template>
 
 <style>
-.done {
+/* .done {
   text-decoration: line-through;
-}
+} */
 </style>

@@ -1,6 +1,5 @@
 <template>
   <section>
-    <h1>Welcome to the Vue Task App</h1>
     <router-view class="app-main" />
     <!-- your routes will load inside of these tags -->
   </section>

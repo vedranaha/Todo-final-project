@@ -1,12 +1,21 @@
 <template>
-  <nav class="nav">
+  <div class="nav">
     <a href="/" class="flex a">
       <img class="w-16" src="../assets/logo_vh3.png" alt="logo" />
     </a>
-
     <button class="button-signOut" @click="signOut">Sign Out</button>
-  </nav>
+  </div>
 </template>
+<style>
+.nav {
+  margin: 20px 0px 0px 50px;
+  display: flex;
+  flex-direction: row;
+}
+/*.button-signOut {
+  margin-left: 300px;
+}*/
+</style>
 
 <script setup>
 import { supabase } from "../supabase";
@@ -23,15 +32,3 @@ async function signOut() {
   redirect.push({ path: "/auth" });
 }
 </script>
-
-<style>
-.nav {
-  margin-left: 100px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.button-signOut {
-  margin-left: 300px;
-}
-</style>
