@@ -1,8 +1,8 @@
 <template>
   <div class="img">
-    <p>
+    <h2 class="flex flex-col items-center">
       {{ item.title }}
-    </p>
+    </h2>
 
     <div class="flex-task">
       <button v-if="!item.is_complete" @click="toggleTodo()">
@@ -11,7 +11,7 @@
       <button v-if="item.is_complete" @click="toggleTodo()">
         <img class="icon" src="../assets/check-4831.svg" alt="" />
       </button>
-      <button @click="toggleEdit()">
+      <button @click="edit()">
         <img class="icon" src="../assets/edit-interface-sign.png" alt="" />
       </button>
       <button @click="remove()">
@@ -19,24 +19,35 @@
       </button>
     </div>
     <!-- Edit dialog -->
-    <div class="flex-edit" v-if="editDialog">
-      <input class="" placeholder="Edit Task" v-model="editTodo" type="text" />
-      <button class="" type="submit" @click.prevent="edit()">Add</button>
-    </div>
-    <p v-if="empty" class="">
-      {{ errorInput }}
-    </p>
+    <input
+      v-if="editMode"
+      v-model="item.title"
+      class=""
+      id="editTitle"
+      type="text"
+      placeholder="Task..."
+    />
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-let empty = ref(false); // for editing a task
-let errorInput = ref(""); // error message variable
+import { useTaskStore } from "../store/task.js";
 
-let editTodo = ref(""); //value from edit dialog
-let editDialog = ref(false); //initially hidden
+const task = useTaskStore();
+const tasks = ref([]);
 
+const editMode = ref(null);
+const getTasks = async () => {
+  tasks.value = await task.fetchTasks();
+};
+// FUNCTIONS
+
+const edit = async (item) => {
+  editMode.value = !editMode.value;
+  await task.updateTask(item.title, item.id);
+  getTasks();
+};
 // export the component as an array item that you can call by item.title for example
 const props = defineProps(["item"]);
 
@@ -44,47 +55,19 @@ const props = defineProps(["item"]);
 let taskDone = true; // toggle boolean value
 
 // Definition of emits to use in parent component for methods
-const emit = defineEmits([
-  "childToggle",
-  "childRemove",
-  "childToggleEdit",
-  "childEdit",
-]);
+const emit = defineEmits(["childToggle", "childRemove", "childEdit"]);
 
 //toggle done and undone function with "emit" to parent component
 function toggleTodo() {
   emit("childToggle", props.item);
 }
 
-// Error Handling
-function errHandl() {
-  errorInput.value = "Field cannot be empty";
-  empty.value = true;
-}
-// Show Edit Dialog
-function toggleEdit() {
-  editDialog.value = !editDialog.value;
-  editTodo.value = props.item.title;
-}
-// Edit task
-function edit() {
-  if (editTodo.value === "") errHandl();
-  // shows error message
-  else {
-    empty.value = false; // hides error message
-    editDialog.value = false; // hides edit dialog
-    const editValues = {
-      oldValue: props.item,
-      newValue: editTodo.value,
-    };
-    emit("childEdit", editValues);
-    // pendings[index] = editTodo.value; // modifies text
-    editTodo.value = ""; // clears input field
-  }
-}
-// Delete task
+//Delete task
 function remove() {
   emit("childRemove", props.item);
+}
+function editTask() {
+  emit("childEdit", props.item);
 }
 </script>
 
