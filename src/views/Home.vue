@@ -1,23 +1,21 @@
 <template>
   <Nav />
-  <NewTask />
+  <NewTask @childAddTodo="addTodo" />
   <div>
     <TaskItem
+      class=""
       @childToggle="toggleTask"
+      @childRemove="remove"
+      @childEdit="edit"
       :item="task"
       v-for="(task, index) in tasks"
     />
   </div>
 </template>
 
-<style>
-.done {
-  text-decoration: line-through;
-}
-</style>
+<style></style>
 
 <script setup>
-//import NewTask from "../components/NewTask.vue";
 import NewTask from "../components/NewTask.vue";
 import Nav from "../components/Nav.vue";
 import TaskItem from "../components/TaskItem.vue";
@@ -36,11 +34,28 @@ async function getTasks() {
 }
 getTasks();
 
+// Individual Functions
+async function addTodo(newTodo) {
+  await useTaskStore().addTask(newTodo);
+  getTasks();
+}
+
 // function to toggle finishas
 async function toggleTask(item) {
   const toggleComplete = !item.is_complete;
   const toggleId = item.id;
   await useTaskStore().toggleComplete(toggleComplete, toggleId);
+  getTasks();
+}
+//Edit Items
+async function edit(item) {
+  await useTaskStore().editTask(item);
+  getTasks();
+}
+
+// Remove Items
+async function remove(item) {
+  await useTaskStore().deleteTask(item.id);
   getTasks();
 }
 </script>

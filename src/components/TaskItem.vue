@@ -43,10 +43,15 @@ const getTasks = async () => {
 };
 // FUNCTIONS
 
-const edit = async (item) => {
-  editMode.value = !editMode.value;
-  await task.updateTask(item.title, item.id);
-  getTasks();
+const edit = async () => {
+  console.log(props.item);
+  if (editMode.value === false) {
+    editMode.value = !editMode.value;
+  } else {
+    await task.editTask(props.item.title, props.item.id);
+    getTasks();
+    editMode.value = !editMode.value;
+  }
 };
 // export the component as an array item that you can call by item.title for example
 const props = defineProps(["item"]);
@@ -65,9 +70,6 @@ function toggleTodo() {
 //Delete task
 function remove() {
   emit("childRemove", props.item);
-}
-function editTask() {
-  emit("childEdit", props.item);
 }
 </script>
 

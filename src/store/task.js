@@ -26,7 +26,8 @@ export const useTaskStore = defineStore("tasks", {
       ]);
       if (error) throw error;
     },
-    async toggleEdit(title, id) {
+    async editTask(title, id) {
+      console.log(title, id);
       const { data, error } = await supabase
         .from("tasks")
         .update({ title: title })
