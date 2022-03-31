@@ -1,32 +1,36 @@
 <template>
-  <div class="img">
-    <h2 class="flex flex-col items-center">
-      {{ item.title }}
-    </h2>
-
-    <div class="flex-task">
-      <button v-if="!item.is_complete" @click="toggleTodo()">
-        <img class="icon" src="../assets/checked-symbol.png" alt="" />
-      </button>
-      <button v-if="item.is_complete" @click="toggleTodo()">
-        <img class="icon" src="../assets/check-4831.svg" alt="" />
-      </button>
-      <button @click="edit()">
-        <img class="icon" src="../assets/edit-interface-sign.png" alt="" />
-      </button>
-      <button @click="remove()">
-        <img class="icon" src="../assets/delete-icon-13.jpg" alt="" />
-      </button>
-    </div>
-    <!-- Edit dialog -->
-    <input
-      v-if="editMode"
-      v-model="item.title"
-      class=""
-      id="editTitle"
-      type="text"
-      placeholder="Task..."
-    />
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">Task name</th>
+          <th scope="col" class="px-6 py-3">completion</th>
+          <th scope="col" class="px-6 py-3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+          >
+            {{ item.title }}
+          </th>
+          <td class="px-6 py-4"></td>
+          <td class="px-6 py-4"></td>
+          <td class="px-6 py-4"></td>
+          <td class="px-6 py-4 text-right">
+            <a
+              href="#"
+              class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              >Edit</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

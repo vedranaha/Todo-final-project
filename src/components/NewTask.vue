@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 import { supabase } from "../supabase";
 import { useTaskStore } from "../store/task";
 import { useUserStore } from "../store/user";
-import TaskItem from "./TaskItem.vue";
+import TaskItem from "./TaskItem1.vue";
 
 // Print User Email to Frontend
 const user = computed(() => useUserStore().$state.user);
