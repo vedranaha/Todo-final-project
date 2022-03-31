@@ -2,16 +2,16 @@
   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
     <th
       scope="row"
-      class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+      class="px-12 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
     >
       {{ item.title }}
     </th>
     <td class="px-6 py-4">
       <button v-if="!item.is_complete" @click="toggleTodo()">
-        <CheckIcon class="h-5 w-5 text-blue-500" />
+        <BellIcon class="h-5 w-5 text-blue-500" />
       </button>
       <button v-if="item.is_complete" @click="toggleTodo()">
-        <BellIcon class="h-5 w-5 text-blue-500" />
+        <CheckIcon class="h-5 w-5 text-blue-500" />
       </button>
     </td>
     <td class="px-6 py-4">
@@ -36,12 +36,12 @@
           datepicker=""
           datepicker-orientation="bottom right"
           type="text"
-          class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input"
+          class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-40 pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input"
           placeholder="Select date"
         />
       </div>
     </td>
-    <td class="px-6 py-4">
+    <td>
       <button @click="edit()">
         <PencilIcon class="h-5 w-5 text-blue-500" />
       </button>
