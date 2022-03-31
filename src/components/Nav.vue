@@ -4,9 +4,9 @@
   >
     <div class="container flex flex-wrap justify-between items-center mx-auto">
       <a href="/" class="flex items-center">
-        <img class="mr-5 h-8 sm:h-9" src="../assets/logo_vh3.png" alt="logo" />
+        <img class="ml-8 h-8 sm:h-9" src="../assets/logo_vh3.png" alt="logo" />
         <span
-          class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+          class="self-center ml-4 text-xl font-semibold whitespace-nowrap text-orange-400 dark:text-gray-300"
           >Todo app Vue3</span
         >
       </a>
