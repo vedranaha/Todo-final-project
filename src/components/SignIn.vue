@@ -1,10 +1,13 @@
 <template>
   <div
-    class="bg-gray-200 rounded py-16 px-12 m-16 flex flex-col items-center justify-center"
+    class="bg-sky-300 rounded p-16 m-16 flex flex-col items-center justify-center"
   >
+    <h1 class="flex text-4xl text-orange-900 font-bold">
+      Welcome to the Vue Task App
+    </h1>
     <!-- Sign in with User profile image -->
     <img
-      class="rounded-full h-32 w-32"
+      class="rounded-full m-5 h-32 w-32"
       src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"
       alt="user avatar"
     />
@@ -30,21 +33,21 @@
           required
         />
       </div>
-      <div class="my-4 flex items-center">
-        <input class="h-4 w-4 mr-2" type="checkbox" id="userRemember" />
-        <label for="userRemember">Remember me</label>
-      </div>
+
       <button
-        class="bg-gray-500 hover:bg-gray-600 text-white font-bold w-full py-3"
+        class="bg-gray-500 m-4 hover:bg-gray-600 text-white font-bold w-full py-3"
         type="submit"
       >
         Sign in
       </button>
     </form>
-    <a href="#" class="self-start">Forgot the password?</a>
     <p>
       Don't have an account?
-      <PersonalRouter :route="route" :routerText="routerText" />
+      <PersonalRouter
+        :route="route"
+        :routerText="routerText"
+        class="text-orange-800 italic font-bold"
+      />
     </p>
   </div>
 </template>

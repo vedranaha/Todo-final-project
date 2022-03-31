@@ -1,9 +1,12 @@
 <template>
   <div
-    class="bg-gray-200 rounded py-16 px-12 m-16 flex flex-col items-center justify-center"
+    class="bg-sky-300 rounded py-16 px-12 m-16 flex flex-col items-center justify-center"
   >
+    <h1 class="flex text-4xl text-orange-900 font-bold">
+      Welcome to the Vue Task App
+    </h1>
     <!-- Sign up -->
-    <h1>Sign Up</h1>
+    <h1 class="flex text-2xl m-6 text-orange-900 font-bold">Sign up</h1>
     <div v-if="errorMsg">
       <p>{{ errorMsg }}</p>
     </div>
@@ -38,10 +41,6 @@
           required
         />
       </div>
-      <div class="my-4 flex items-center">
-        <input class="h-4 w-4 mr-2" type="checkbox" id="userRemember" />
-        <label for="userRemember">Remember me</label>
-      </div>
       <button
         class="bg-gray-500 hover:bg-gray-600 text-white font-bold w-full py-3"
         type="submit"
@@ -51,7 +50,11 @@
     </form>
     <p>
       Have an account?
-      <PersonalRouter :route="route" :routerText="routerText" />
+      <PersonalRouter
+        :route="route"
+        :routerText="routerText"
+        class="text-orange-800 italic font-bold"
+      />
     </p>
   </div>
 </template>

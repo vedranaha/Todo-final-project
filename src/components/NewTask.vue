@@ -37,7 +37,7 @@ const newTask = () => {
       <div class="mb-6">
         <label
           for="title"
-          class="block m-4 text-xl font-medium text-blue-400 dark:text-gray-300"
+          class="block m-10 text-xl font-medium text-sky-700 dark:text-gray-300"
           >Welcome {{ userName }}
         </label>
         <input
@@ -49,7 +49,7 @@ const newTask = () => {
       </div>
       <button
         type="submit"
-        class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-600"
+        class="text-gray bg-gradient-to-r from-orange-200 via-orange-300 to-orange-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
       >
         Add Todo
       </button>

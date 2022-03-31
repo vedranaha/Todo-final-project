@@ -1,22 +1,19 @@
 <template>
-  <nav
-    class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800"
-  >
-    <div class="container flex flex-wrap justify-between mx-auto">
-      <a href="/" class="flex items-center">
-        <img class="ml-8 h-8 sm:h-9" src="../assets/logo_vh3.png" alt="logo" />
-        <span
-          class="self-center ml-4 text-xl font-semibold whitespace-nowrap text-orange-400 dark:text-gray-300"
-          >Todo app Vue3 - Supabase</span
-        >
-      </a>
+  <nav class="bg-sky-300 rounded py-2 center flex flex-row justify-center">
+    <a href="/" class="flex items-center">
       <img
-        class="w-8 h-8 mr-1 rounded-full"
-        src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        alt="user photo"
+        class="w-10 h-10 sm:h-9 mr-20"
+        src="../assets/logo_vh3.png"
+        alt="logo"
       />
-      <button class="mr-10" @click="signOut">Sign Out</button>
-    </div>
+    </a>
+    <button
+      type="button"
+      class="text-orange-800 italic font-bold"
+      @click="signOut"
+    >
+      Sign Out
+    </button>
   </nav>
 </template>
 <style></style>
