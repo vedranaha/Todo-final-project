@@ -25,7 +25,7 @@ const newTitle = ref("");
 const task = useTaskStore();
 
 const newTask = () => {
-  useTaskStore().insertTask(newItem.value, user.useUserStore);
+  useTaskStore().insertTask(newItem.value, user);
   newItem.value = "";
   getTasks();
 };

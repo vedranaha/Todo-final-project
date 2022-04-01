@@ -11,7 +11,6 @@
         <tr>
           <th scope="col" class="px-6 py-3">Task name</th>
           <th scope="col" class="px-6 py-3">Completion</th>
-          <th scope="col" class="px-6 py-3">Expire</th>
           <th scope="col" class="px-6 py-3"></th>
           <th scope="col" class="px-6 py-3"></th>
         </tr>
