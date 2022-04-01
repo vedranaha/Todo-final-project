@@ -1,31 +1,32 @@
 <template>
   <Nav />
   <NewTask @childAddTodo="addTodo" />
-
-  <table
-    class="bg-center w-90% m-6 text-sm text-center text-gray-500 dark:text-gray-400"
-  >
-    <thead
-      class="text-xs text-gray-700 uppercase bg-orange-100 dark:bg-gray-700 dark:text-gray-400"
+  <div class="flex flex-col flex-wrap justify-center">
+    <table
+      class="flex-wrap bg-center w-90% m-6 text-sm text-center text-gray-500 dark:text-gray-400"
     >
-      <tr>
-        <th scope="col" class="px-6 py-3">Task name</th>
-        <th scope="col" class="px-6 py-3">Completion</th>
-        <th scope="col" class="px-6 py-3">Expire</th>
-        <th scope="col" class="px-6 py-3"></th>
-        <th scope="col" class="px-6 py-3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <TaskItem1
-        @childToggle="toggleTask"
-        @childRemove="remove"
-        @childEdit="edit"
-        :item="task"
-        v-for="(task, index) in tasks"
-      />
-    </tbody>
-  </table>
+      <thead
+        class="text-xs text-gray-700 uppercase bg-orange-100 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">Task name</th>
+          <th scope="col" class="px-6 py-3">Completion</th>
+          <th scope="col" class="px-6 py-3">Expire</th>
+          <th scope="col" class="px-6 py-3"></th>
+          <th scope="col" class="px-6 py-3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <TaskItem1
+          @childToggle="toggleTask"
+          @childRemove="remove"
+          @childEdit="edit"
+          :item="task"
+          v-for="(task, index) in tasks"
+        />
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <style></style>
